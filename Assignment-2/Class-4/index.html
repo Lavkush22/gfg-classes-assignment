@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>user registration form</title>
+</head>
+<script>
+     formValidation = () => {
+        var username = document.getElementById("name").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var confPass = document.getElementById("confPass").value;
+
+        if(username==""){
+            document.getElementById("Username").innerHTML="Enter user name please!<br/>";
+            return false;
+        }
+
+        if(email==""){
+            document.getElementById("useremail").innerHTML="Enter user email please!<br/>";
+            return false;
+        }
+
+        if(password==""){
+            document.getElementById("pass").innerHTML="Enter password please!<br/>";
+            return false;
+        }
+
+        if(password.length < 8){
+            document.getElementById("pass").innerHTML="Password length must be atleast 8 characters<br/>";
+            return false;
+        }
+
+        if(password.length > 15){
+            document.getElementById("pass").innerHTML="Password length must not exceed 15 characters<br/>";
+            return false;
+        }
+
+        var passw=  /^[A-Za-z]\w{7,14}$/;
+        if(!(password.match(passw))){
+            document.getElementById("pass").innerHTML="Password must be combination of alphabet, number <br/>";
+            return false;
+        }
+
+        if(confPass==""){
+            document.getElementById("confpass").innerHTML="Enter confirm password please!<br/>";
+            return false;
+        }
+
+        if(confPass != password){
+            document.getElementById("confpass").innerHTML="Enter correct confirm password please!<br/>";
+            return false;
+        }
+    }
+</script>
+<body>
+  <h2>User Registration Form</h2>
+  <form onsubmit="return formValidation()" class="userForm">
+    <div class="container">
+    <span id="Username" style="color: red;"></span>
+    <label>Name</label><br/>
+    <input type="text" id="name" value="" placeholder="username"><br/><br/>
+    
+    <span id="useremail" style="color: red;"></span>
+    <label>Email</label><br/>
+    <input type="email" id="email" value="" placeholder="email"><br/><br/>
+    
+    <span id="pass" style="color: red;"></span>
+    <label>Password</label><br/>
+    <input type="password" id="password" value="" placeholder="password"><br/><br/>
+
+    <span id="confpass" style="color: red;"></span>
+    <label>Confirm Password</label><br/>
+    <input type="password" id="confPass" value="" placeholder="Confirm Password"><br/><br/>
+
+    <input type = "submit" value = "Submit" class="registerbtn">  
+    <input type = "reset" value = "Reset" class="registerbtn">  
+    </div>
+  </form>  
+</body>
+</html>
